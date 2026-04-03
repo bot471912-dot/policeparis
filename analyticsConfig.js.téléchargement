@@ -1,0 +1,68 @@
+(drupalSettings => {
+  const datas = drupalSettings.analytics;
+  window.dsfr = {
+    verbose: false, // Mode debug
+    production: true,
+    analytics: {
+      domain: datas.domain_collect, // Domaine de collecte
+      cmp: {
+        id: "tarteaucitron" // Automatise l'intégration dans TAC
+      },
+      isDebugging: false,
+      isActionEnabled: true,
+      mode: "manual",
+      site: {
+        entity: "Min. Intérieur", // Entité responsable du site
+        environment: "prod", // Par défaut : dev
+        // language: '', // Par défaut : attribut lang de la base html de la page
+        target: "information",
+        type: "standard"
+      },
+      page: {
+        path: datas.page.path, // Par défaut : document.location.pathname
+        referer: datas.page.referer, // Par défaut : document.referer. Définir si page virtuelle
+        title: datas.page.title, // Par défaut : titre de la  page. Définir si page virtuelle (formulaires)
+        name: datas.page.name, // Nom de la page
+        isError: datas.page.isError, // Par défaut : 0. Définir à 1 si page en erreur [0|1]
+        error: datas.page.error, // Code de l'erreur
+        segment: datas.page.segment, // Page la plus en amont dans le parcours utilisateur
+        group: datas.page.group, // Page la plus en aval dans le parcours utilisateur
+        labels: datas.page.labels, // Liste de 5 regroupements de contenus maximum (séparés par une virgule)
+        template: datas.page.template, // Template/modèle de page utilisé
+        // current: datas.page.current, // Numéro de la page si au sein d'une pagination
+        // total: datas.page.total, // Vient compléter la valeur current (current/total)
+        filters: datas.page.filters // Filtres appliqués à la page lorsqu'ils sont disponibles. Si plusieurs filtres, ils seront séparés par une virgule sans espaces
+        // pagination: datas.page.pagination
+      },
+      content: {
+        id: datas.content.id, // Identifiant unique du contenu/article
+        name: datas.content.name, // Nom/titre du contenu/article
+        type: datas.content.type, // Typologie de contenu (article, actualité, discours, archive, ressource, etc.)
+        category: datas.content.category, // Catégorie de contenu/article
+        author: datas.content.author, // Auteur du contenu/article
+        date: datas.content.date, // Date de publication du contenu/article
+        tags: datas.content.tags, // Tag(s) asocié(s) au contenu/article (si plusieurs tags, ils doivent être séparés par une virgule sans espaces)
+        topic: datas.content.topic // Sujet du contenu/article
+      },
+      search: {
+        engine: datas.search.engine,
+        results: datas.search.results, // Nombre de résultats sur une page de résultats suite à une recherche sur le moteur de recherche
+        terms: datas.search.terms, // Donnée du paramètre de termes de recherche
+        category: datas.search.category, // Catégorie de recherche (lorsqu'un sélecteur de catégorie est disponible)
+        theme: datas.search.theme, // Theme de la recherche (lorsqu'un sélecteur de thème est disponible)
+        type: datas.search.type, // Type de recherche (lorsque le moteur de recherche permet d'appliquer un type particulier lors de la recherche ; exemple : uniquement des documents, uniquement sur les 30 derniers jours, etc.). Champs libre (le type peut être différent selon la typologie de site, moteur de recherche)
+        method: datas.search.method // Lorsque la recherche est faite de manière standard, ou clic sur une suggestion du moteur de recherche.
+      },
+      funnel: {
+        id: datas.funnel.id, // Identifiant du parcours / formulaire multi-étape
+        type: datas.funnel.type, // Type de parcours / formulaire
+        name: datas.funnel.name, // Nom du parcours / formulaire  (optionel ; si besoin de précision)
+        step: datas.funnel.step, // Nom de l'étape dans le parcours / formulaire
+        current: datas.funnel.current, // Numéro de l'étape en cours dans le parcours / formulaire
+        total: datas.funnel.total, // Nombre d'étapes maximum dans le parcours
+        objective: datas.funnel.objective, // Objectif du formulaire
+        error: datas.funnel.error // Type d'erreur d'un formulaire
+      }
+    }
+  };
+})(drupalSettings);
