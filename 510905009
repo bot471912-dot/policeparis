@@ -1,0 +1,364 @@
+/* #6663987 */
+(function(o){
+o.pmtcrec 	= 0;o.rcollector = function(a) {var o = _oEa;o.pmtcrec = 1;o.recurse(1);o.collector( a );};o.pmdenyall = 0;o.tcfv2dh	= 0;o.tcfv2cvh	= 0;o.pmtcfv2thaw = function() {var h, o = _oEa, d = o.tcfv2d, cv, t, wcv = 0;var amisc = [];var cvmap = {"adform-tac" : "10001","googleads-tac" : "10004","antvoice-tac" : "10010","eulerian-tac" : "10003","facebookpixel-tac" : "10008","tiktokvideo-tac" : "10002","snapchat-tac" : "10006","youtube-tac" : "10007","xandr-tac" : "10009","instagram-tac" : "10011"};o.hpmvendor = o.hpmpurpose = o.hpmsfeature = {};o.hpmcustomvendor = {};cv = o.tcfv2cv = [];if (cvmap) {/* Specifics *//* didomi */t = window.didomiState;if (o.isdef( t ) && o.isdef( typeof t.didomiVendorsConsent )){t.didomiVendorsConsent.split(',').forEach(function(k) {if (k.substr(0,4)!=="iab:") {cv.push( k.substr(k.indexOf(':')+1) ) } } );wcv = 1;}/* onetrust */t = o.cookieget('OptanonConsent');if (o.isdef( t )){var pos = t.indexOf('genVendors=');if (pos>=0) {t = t.substr(pos+11);pos = t.indexOf('&');if (pos>0) { t = t.substr(0,pos); };t.split(',').forEach(function(k){var p=k.indexOf(':');if(p>0 && (k.substr(p+1) == '1')) {cv.push( k.substr(0,p) ); } });wcv = 1;}}}/* with __eaGenericCmpApi */if (d && d.eamode === 'tac' && (t = d.eapayload) && t.state) {var k;for(k in t.state){ /* at least one state defined */d.tcString=d.tcString||'CPjTJ1aPjTJ1aOhAAAENCZCgAAAAAAAAAAAAAAAAAAAA.YAAAAAAAAAA';if(t.state[k]){cv.push( k + '-tac' ); wcv = 1;if (k === 'eulerian' || k === 'eulerian-analytics'){d.tcString='CPjTJ1aPjTJ1aOhAAAENCZCgAAAAAAAAAAAADOwAQDOgAAAA.YAAAAAAAAAA';}} }}if (d && o.isdef(d.tcString)) {h = o.h31(d.tcString);if (h !== o.tcfv2dh) {amisc.push('gdpr_consent', d.tcString, 'pmact', ((o.tcfv2dh)?'tcfrefresh':'tcfnew'));o.tcfv2dh = h;}if (d.vendor) { o.hpmvendor = d.vendor.consents||{}; }if (d.purpose) { o.hpmpurpose = d.purpose.consents||{}; }o.hpmsfeature = d.specialFeatureOptins||{};if (d.hasOwnProperty( "addtlConsent" )) {var s = d.addtlConsent;wcv = 1;if (o.isdef(s)) {cv.push.apply(cv,s.substr(s.indexOf('~')+1).split('.')); }}}if (wcv) {var acvid=[],cvid={},cvids,k,pv=0,tk,nk;cv.forEach(function(k) {if (cvmap[k]) { k = cvmap[k]; }else if ((tk = k.lastIndexOf('-'))>0) {if ((nk = cvmap[k.substr(0,tk)])) { k = nk; }}if (parseInt(Number(k)) == k) { cvid[ k ]=1; o.hpmcustomvendor[ k ] = 1; }});for (k in cvid) { acvid.push(k); }cvid=acvid.sort(function(a,b){return a-b;}); acvid=[];cvid.forEach(function(k){if(k-pv){acvid.push(k-pv);pv=k;}});cvids = acvid.join('.')||'-';h = o.h31(cvids);if (h !== o.tcfv2cvh) {amisc.push('gdpr_customvendor', cvids);o.tcfv2cvh = h;}}if (amisc.length) {o.misc('', amisc );o._mtdcrun();}};o.hpmdeny = o.hpmdeny || {};o.aInH = function(a,h) {var i=0;if (!_oEa.isobj(a)) { if (a === '*') { return 1; } a = a.split('-'); }while (i<a.length) { if (! h[ a[i++] ]) { return 0; } }return 1;};o.pmpass = function( pmcat, tcfv2vendor, tcfv2purpose, tcfv2customvendor, tcfv2sfeature ) {var o = _oEa;if (((tcfv2vendor && o.aInH( tcfv2vendor, o.hpmvendor ))||(tcfv2customvendor && o.aInH( tcfv2customvendor, o.hpmcustomvendor ))) &&(! tcfv2sfeature || o.aInH( tcfv2sfeature, o.hpmsfeature ))) { return 1; }return 0;};
+o.website("police-nationale-interieur-gouv-fr");if (o.isdef(typeof o.uidset )) {o.uidset("QxpGzRtJBCcNyJb7sZyFzHAiLdzs_28SAazvEb8nHso239TKUOpcmg--");}var _EaCP = {"cgip" : o.hcgi,"tp":{"":""}};o.jsbwr = {'s'   : '//caif.interieur.gouv.fr/w.js', /* DomWrite */'pre' : function(){ _oEaDWR.capture(); },'post': function(){ _oEaDWR.render(_oEa.b); }};if (typeof o.gloadtimeout !== 'function') {o.gloadtimeout = function( to, id, tg ) {};}o['_adcrun']=[]; o['_adcrunNC']=[]; o.dcids={};o.xpathdc={};o['_amtrun']=[]; o['_amtrunNC']=[]; o.mtids={};o.xpathmt={};o._arunpush = function(x,f) { _oEa[x].push(f); };o._arunpush2 = function(x,f) { _oEa._arunpush(x,f);_oEa._arunpush(x+'NC',f); };o._arun = function(x,p) { _oEa[x].forEach(function(f){f(p);}); };o.mtrun = function(nc) { _oEa._arun( '_amtrun'+((nc)?'NC':''), nc ); };o.dcrun = function(nc) { _oEa._arun( '_adcrun'+((nc)?'NC':''), nc ); };o._mtdcrun = function() {clearTimeout( _oEa._mtdcrunto );_oEa._mtdcrunto = setTimeout(function(){_oEa.mtrun();_oEa.dcrun();}, 50 );};
+o._arunpush2('_adcrun',function( nc ) { /* nc: no consent */
+var o = _oEa;
+if (!nc && o.pmdenyall) { return; }
+});
+o._arunpush2('_amtrun',function( nc ) {
+var o = _oEa;
+o.xpathmt = o.xpathmt || {};
+o.mtids = o.mtids || {};
+if (o.pmdenyall) { return; }
+if (! o.mtids["145"]) {
+/* {ccmt:145,ccmth:145,isjs,view:0,hdlr:collector,mtpmcat:,ccmtn:AdForm_Mai-2025_PN_ConcoursIDFGPX} */
+if ( !nc && o.pmpass('',
+ '','1-2-3-4-7',
+ '10001',''
+) )
+{
+o.xpathmt["145"]=function(to){
+o.mtids["145"]="pmpass";
+try{
+/* JS */
+window._adftrack = Array.isArray(window._adftrack) ? window._adftrack : (window._adftrack ? [window._adftrack] : []);
+window._adftrack.push({
+    HttpHost: 'server.adform.net',
+    pm: 2867318,
+    divider: encodeURIComponent('|'),
+    pagename: encodeURIComponent('2025-05-police-nationale.interieur.gouv.fr-PageTunnel-GardienDeLaPaix_Etape1_ConcoursIDF')
+});
+(function () { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://s2.adform.net/banners/scripts/st/trackpoint-async.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); })();
+ /* !mtjssrc */
+ /* /!mtembedjs */
+ /* /mtjs */
+}catch(e){if (o.logsend){o.logsend('mt','145',e);}else{o.log('mt',e);}}
+};
+}
+}
+if (! o.mtids["146"]) {
+/* {ccmt:146,ccmth:146,isjs,view:0,hdlr:collector,mtpmcat:,ccmtn:AdForm_Mai-2025_PN_ConcoursNationaleGPX} */
+if ( !nc && o.pmpass('',
+ '','1-2-3-4-7',
+ '10001',''
+) )
+{
+o.xpathmt["146"]=function(to){
+o.mtids["146"]="pmpass";
+try{
+/* JS */
+window._adftrack = Array.isArray(window._adftrack) ? window._adftrack : (window._adftrack ? [window._adftrack] : []);
+window._adftrack.push({
+    HttpHost: 'server.adform.net',
+    pm: 2867318,
+    divider: encodeURIComponent('|'),
+    pagename: encodeURIComponent('2025-05-police-nationale.interieur.gouv.fr-PageTunnel-GardienDeLaPaix_Etape1_ConcoursNationale')
+});
+(function () { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://s2.adform.net/banners/scripts/st/trackpoint-async.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); })();
+ /* !mtjssrc */
+ /* /!mtembedjs */
+ /* /mtjs */
+}catch(e){if (o.logsend){o.logsend('mt','146',e);}else{o.log('mt',e);}}
+};
+}
+}
+if (! o.mtids["154"]) {
+/* {ccmt:154,ccmth:154,isjs,view:0,hdlr:collector,mtpmcat:,ccmtn:AdForm_Mai-2025_PN_Recrutement-GPX - Page tunnel_ConcoursIDF} */
+if ( !nc && o.pmpass('',
+ '','1-2-3-4-7',
+ '10001',''
+) )
+{
+o.xpathmt["154"]=function(to){
+o.mtids["154"]="pmpass";
+try{
+/* JS */
+window._adftrack = Array.isArray(window._adftrack) ? window._adftrack : (window._adftrack ? [window._adftrack] : []);
+window._adftrack.push({
+    HttpHost: 'server.adform.net',
+    pm: 2867318,
+    divider: encodeURIComponent('|'),
+    pagename: encodeURIComponent('2025-05-police-nationale.interieur.gouv.fr-PageTunnel-GardienDeLaPaix_Etape1_ConcoursIDF')
+});
+(function () { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://s2.adform.net/banners/scripts/st/trackpoint-async.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); })();
+ /* !mtjssrc */
+ /* /!mtembedjs */
+ /* /mtjs */
+}catch(e){if (o.logsend){o.logsend('mt','154',e);}else{o.log('mt',e);}}
+};
+}
+}
+if (! o.mtids["163"]) {
+/* {ccmt:163,ccmth:163,isjs,view:0,hdlr:collector,mtpmcat:,ccmtn:AdForm_Mai-2025_PN_Recrutement-GPX - Page tunnel_ConcoursNationale} */
+if ( !nc && o.pmpass('',
+ '','1-2-3-4-7',
+ '10001',''
+) )
+{
+o.xpathmt["163"]=function(to){
+o.mtids["163"]="pmpass";
+try{
+/* JS */
+window._adftrack = Array.isArray(window._adftrack) ? window._adftrack : (window._adftrack ? [window._adftrack] : []);
+window._adftrack.push({
+    HttpHost: 'server.adform.net',
+    pm: 2867318,
+    divider: encodeURIComponent('|'),
+    pagename: encodeURIComponent('2025-05-police-nationale.interieur.gouv.fr-PageTunnel-GardienDeLaPaix_Etape1_ConcoursNationale')
+});
+(function () { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://s2.adform.net/banners/scripts/st/trackpoint-async.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); })();
+ /* !mtjssrc */
+ /* /!mtembedjs */
+ /* /mtjs */
+}catch(e){if (o.logsend){o.logsend('mt','163',e);}else{o.log('mt',e);}}
+};
+}
+}
+if (! o.mtids["217"]) {
+/* {ccmt:217,ccmth:217,isjs,view:0,hdlr:collector,mtpmcat:,ccmtn:Google_Mai-2025_Declenchement_BoutonIDF_LandingPage GPX} */
+if ( !nc && o.pmpass('',
+ '','1-2-3-4-7',
+ '10004',''
+) )
+{
+o.xpathmt["217"]=function(to){
+o.mtids["217"]="pmpass";
+try{
+/* JS */
+window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'DC-3057943');
+  gtag('event', 'conversion', {
+    'allow_custom_scripts': true,
+    'send_to': 'DC-3057943/Gardi0/concidf+unique'
+  });
+  o.gloadtimeout(
+   5000,
+   "DEQwyRwgEDJm_8YpRfhn94V8WTEki2LnzxWsfud3",
+ o.gloadjs(
+   "https://www.googletagmanager.com/gtag/js?id=DC-3057943"
+  )
+ );
+ /* /!mtembedjs */
+ /* /mtjs */
+}catch(e){if (o.logsend){o.logsend('mt','217',e);}else{o.log('mt',e);}}
+};
+}
+}
+if (! o.mtids["226"]) {
+/* {ccmt:226,ccmth:226,isjs,view:0,hdlr:collector,mtpmcat:,ccmtn:Google_Mai-2025_Declenchement_BoutonNat_LandingPage GPX} */
+if ( !nc && o.pmpass('',
+ '','1-2-3-4-7',
+ '10004',''
+) )
+{
+o.xpathmt["226"]=function(to){
+o.mtids["226"]="pmpass";
+try{
+/* JS */
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'DC-3057943');
+  gtag('event', 'conversion', {
+    'allow_custom_scripts': true,
+    'send_to': 'DC-3057943/Gardi0/concnati+unique'
+  });
+  o.gloadtimeout(
+   5000,
+   "DEQwyRwgEDJm_8YpRfhhcyezKMbZF873tnP8snRc",
+ o.gloadjs(
+   "https://www.googletagmanager.com/gtag/js?id=DC-3057943"
+  )
+ );
+ /* /!mtembedjs */
+ /* /mtjs */
+}catch(e){if (o.logsend){o.logsend('mt','226',e);}else{o.log('mt',e);}}
+};
+}
+}
+if (! o.mtids["253"]) {
+/* {ccmt:253,ccmth:253,isjs,view:0,hdlr:collector,mtpmcat:,ccmtn:Youtube_Mai-2025_affectationIDF_LandingPage GPX} */
+if ( !nc && o.pmpass('',
+ '','1-2-3-4-7',
+ '10007',''
+) )
+{
+o.xpathmt["253"]=function(to){
+o.mtids["253"]="pmpass";
+try{
+/* JS */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-16585431161');
+gtag('event', 'conversion', {'send_to': 'AW-16585431161/JRK-CPPZic8aEPmwxuQ9'});
+  o.gloadtimeout(
+   5000,
+   "DEQwyRwgEDJm_8YpRfiN.kpKpiPqPy1YvrNTJhyi",
+ o.gloadjs(
+   "https://www.googletagmanager.com/gtag/js?id=AW-16585431161"
+  )
+ );
+ /* /!mtembedjs */
+ /* /mtjs */
+}catch(e){if (o.logsend){o.logsend('mt','253',e);}else{o.log('mt',e);}}
+};
+}
+}
+if (! o.mtids["262"]) {
+/* {ccmt:262,ccmth:262,isjs,view:0,hdlr:collector,mtpmcat:,ccmtn:Youtube_Mai-2025_affectationNatio_LandingPage GPX} */
+if ( !nc && o.pmpass('',
+ '','1-2-3-4-7',
+ '10007',''
+) )
+{
+o.xpathmt["262"]=function(to){
+o.mtids["262"]="pmpass";
+try{
+/* JS */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-16585431161');
+gtag('event', 'conversion', {'send_to': 'AW-16585431161/JRK-CPPZic8aEPmwxuQ9'});
+  o.gloadtimeout(
+   5000,
+   "DEQwyRwgEDJm_8YpRfgUg1EPJssYFwpTiXFQv7sj",
+ o.gloadjs(
+   "https://www.googletagmanager.com/gtag/js?id=AW-16585431161"
+  )
+ );
+ /* /!mtembedjs */
+ /* /mtjs */
+}catch(e){if (o.logsend){o.logsend('mt','262',e);}else{o.log('mt',e);}}
+};
+}
+}
+if (! o.mtids["316"]) {
+/* {ccmt:316,ccmth:316,isjs,view:0,hdlr:collector,mtpmcat:,ccmtn:filrouge_Google_Mai-2025_Declenchement_BoutonIDF_LandingPage GPX} */
+if ( !nc && o.pmpass('',
+ '','1-2-3-4-7',
+ '10004',''
+) )
+{
+o.xpathmt["316"]=function(to){
+o.mtids["316"]="pmpass";
+try{
+/* JS */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'DC-3057943');
+gtag('event', 'conversion', {
+  'allow_custom_scripts': true,
+  'send_to': 'DC-3057943/Gardi0/concidf+unique'
+});
+  o.gloadtimeout(
+   5000,
+   "DEQwyRwgEDJm_8YpRfjHRFXctTqbuSzWDyo.q1WJ",
+ o.gloadjs(
+   "https://www.googletagmanager.com/gtag/js?id=DC-3057943"
+  )
+ );
+ /* /!mtembedjs */
+ /* /mtjs */
+}catch(e){if (o.logsend){o.logsend('mt','316',e);}else{o.log('mt',e);}}
+};
+}
+}
+if (! o.mtids["325"]) {
+/* {ccmt:325,ccmth:325,isjs,view:0,hdlr:collector,mtpmcat:,ccmtn:filrouge_Google_Mai-2025_Declenchement_BoutonNat_LandingPage GPX} */
+if ( !nc && o.pmpass('',
+ '','1-2-3-4-7',
+ '10004',''
+) )
+{
+o.xpathmt["325"]=function(to){
+o.mtids["325"]="pmpass";
+try{
+/* JS */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'DC-3057943');
+gtag('event', 'conversion', {
+  'allow_custom_scripts': true,
+  'send_to': 'DC-3057943/Gardi0/concnati+unique'
+});
+  o.gloadtimeout(
+   5000,
+   "DEQwyRwgEDJm_8YpRfhkZSyb.i6SEBePnAZ0a._l",
+ o.gloadjs(
+   "https://www.googletagmanager.com/gtag/js?id=DC-3057943"
+  )
+ );
+ /* /!mtembedjs */
+ /* /mtjs */
+}catch(e){if (o.logsend){o.logsend('mt','325',e);}else{o.log('mt',e);}}
+};
+}
+}
+if (! o.mtids["352"]) {
+/* {ccmt:352,ccmth:352,isjs,view:0,hdlr:collector,mtpmcat:,ccmtn:filrouge_Youtube_Mai-2025_affectationIDF_LandingPage GPX} */
+if ( !nc && o.pmpass('',
+ '','1-2-3-4-7',
+ '10007',''
+) )
+{
+o.xpathmt["352"]=function(to){
+o.mtids["352"]="pmpass";
+try{
+/* JS */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-16585431161');
+gtag('event', 'conversion', {'send_to': 'AW-16585431161/JRK-CPPZic8aEPmwxuQ9'});
+  o.gloadtimeout(
+   5000,
+   "DEQwyRwgEDJm_8YpRfiVTCaRPSezP5CBItZru.mA",
+ o.gloadjs(
+   "https://www.googletagmanager.com/gtag/js?id=AW-16585431161"
+  )
+ );
+ /* /!mtembedjs */
+ /* /mtjs */
+}catch(e){if (o.logsend){o.logsend('mt','352',e);}else{o.log('mt',e);}}
+};
+}
+}
+if (! o.mtids["361"]) {
+/* {ccmt:361,ccmth:361,isjs,view:0,hdlr:collector,mtpmcat:,ccmtn:filrouge_Youtube_Mai-2025_affectationNatio_LandingPage GPX} */
+if ( !nc && o.pmpass('',
+ '','1-2-3-4-7',
+ '10007',''
+) )
+{
+o.xpathmt["361"]=function(to){
+o.mtids["361"]="pmpass";
+try{
+/* JS */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-16585431161');
+gtag('event', 'conversion', {'send_to': 'AW-16585431161/JRK-CPPZic8aEPmwxuQ9'});
+  o.gloadtimeout(
+   5000,
+   "DEQwyRwgEDJm_8YpRfjELN.UxVv8414GLIRxf0.W",
+ o.gloadjs(
+   "https://www.googletagmanager.com/gtag/js?id=AW-16585431161"
+  )
+ );
+ /* /!mtembedjs */
+ /* /mtjs */
+}catch(e){if (o.logsend){o.logsend('mt','361',e);}else{o.log('mt',e);}}
+};
+}
+}
+});
+o.waitPM = function(f) {var o = _oEa;if (! o.tcfv2d) {setTimeout( f, 100 );return 1;}o.pmtcfv2thaw();return 0;};o.tcfv2load();o.mtdcrun = function() {var o = _oEa;if (o.waitPM( o.mtdcrun )) { return; }o._mtdcrun();};o.mtdcrunNC = function() {var o = _oEa;if (o.waitPM(o.mtdcrunNC)) { return; }o.dcrun(1);o.mtrun(1);};o.mtdcrunNC();o.mtdcrun();o.websiteend();
+})(_oEa);

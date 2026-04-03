@@ -1,0 +1,5 @@
+window.addEventListener("DOMContentLoaded", () => {
+  window.dsfr.analytics.readiness.then(() => {
+    window.dsfr.analytics.collect();
+  });
+});
